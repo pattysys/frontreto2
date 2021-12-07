@@ -1,124 +1,136 @@
-function traerInformacionProductos(){
-    console.log("test");
-        $.ajax({
-        url:"localhost:8080/api/fragance/all",
-        type:"GET",
-        datatype:"JSON",
-        success:function(respuesta){
-            console.log(respuesta);
-            pintarRespuesta(respuesta);
-        }
-    });
-}
-function pintarRespuesta(respuesta){
 
-    let myTable="<table>";
-    for(i=0;i<respuesta.length;i++){
-        myTable+="<tr>";
-        
-        myTable+="<td>"+respuesta[i].reference+"</td>";
-        myTable+="<td>"+respuesta[i].brand+"</td>";
-        myTable+="<td>"+respuesta[i].category+"</td>";
-        myTable+="<td>"+respuesta[i].description+"</td>";
-        myTable+="<td>"+respuesta[i].price+"</td>";
-        myTable+="<td>"+respuesta[i].quantity+"</td>";
-        myTable+="<td>"+respuesta[i].description+"</td>";
-        myTable+="<td>"+respuesta[i].availability+"</td>";
-        myTable+="<td>"+respuesta[i].photography+"</td>";
-        myTable+="<td> <button onclick=' agregarProducto("+respuesta[i].idClient+")'>Agregar</button>";
-        myTable+="<td> <button onclick='editarProducto("+JSON.stringify(respuesta[i].reference)+")'>Editar</button>";
-        myTable+="<td> <button onclick='borrarProducto("+JSON.stringify(respuesta[i].reference)+")'>Eliminar</button>";
-        myTable+="</tr>";
-    }
-    myTable+="</table>";
-    $("#resultado3").html(myTable);
-}
 
-function agregarProducto(){
-
-    Swal
-    .fire({
-        title: "Tu nombre",
-        input: "text",
-        showCancelButton: true,
-        confirmButtonText: "Guardar",
-        cancelButtonText: "Cancelar",
-    })
-    .then(resultado => {
-        if (resultado.value) {
-            let nombre = resultado.value;
-            console.log("Hola, " + nombre);
-        }
-    });
-}
-
-function borrarProducto(reference){
-    console.log(reference);
-    let myData={
-        id:reference
+function guardarInformacionProductos() {
+    let var2 = {
+        id: parseInt($("#reference").val()),
+        reference: $("#reference").val(),
+        brand: $("#brand").val(),
+        category: $("#category").val(),
+        presentation: $("#presentation").val(),
+        description:$("#description").val(),
+        availability: $("#availability").val(),
+        price:$("#price").val(),
+        quantity:$("#quantity").val(),
+        photography:$("photography").val()
     };
-    let dataToSend=JSON.stringify(myData);
-    console.log(dataToSend);
-    $.ajax({
-        url:"localhost:8080/api/fragance/"+reference,
-        type:"DELETE",
-        data:dataToSend,
-        contentType:"application/JSON",
-        datatype:"JSON",
-        success:function(respuesta){
-            $("#resultado").empty();
-            traerInformacionProductos();
-            Swal
-    .fire({
-        title: "Venta #123465",
-        text: "¿Eliminar?",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText: "Cancelar",
-    })
-    .then(resultado => {
-        if (resultado.value) {
-            // Hicieron click en "Sí"
-            console.log("*se elimina la venta*");
-        } else {
-            // Dijeron que no
-            console.log("*NO se elimina la venta*");
-        }
-    });
-        }
-    });
 
-}
-function editarProducto(id) {
-    Swal.fire({
-        title: 'Custom width, padding, background.',
-        width: 600,
-        padding: '3em',
-        background: '#fff url(/images/trees.png)',
-        backdrop: `
-          rgba(0,0,123,0.4)
-          url("https://res.cloudinary.com/dc04oiqvh/image/upload/v1625528813/Logo_500x500_px_1_piyfzd.gif")
-          left top
-          no-repeat
-        `
-      })
-   
     $.ajax({
-        dataType: 'json',
-        url:"http://localhost:8080/api/fragance/"+id,
-    
-        type: 'GET',
+            type: 'POST',
+            contentType: "application/json; charset=utf-8",
+            dataType: 'JSON',
+            data: JSON.stringify(var2),
+
+            url: "http://localhost:8080/api/fragance/new",
+
+
+            success: function (response) {
+                console.log(response);
+                console.log("Se guardo correctamente");
+                alert("Cuenta creada de forma correcta");
+                window.location.reload()
+
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                window.location.reload()
+                alert("No fue posible crear la cuenta");
+
+
+            }
+        }
+    );
+}
+
+function actualizarInformacionProductos() {
+
+    if (!$('#id').val()) {
+        alert('Debes ingresar una referencia');
+        return;
+    }
+    var elemento = {
+        id: parseInt($("#reference").val()),
+        reference: $("#reference").val(),
+        brand: $("#brand").val(),
+        category: $("#category").val(),
+        presentation: $("#presentation").val(),
+        description:$("#description").val(),
+        availability: $("#availability").val(),
+        price:$("#price").val(),
+        quantity:$("#quantity").val(),
+        photography:$("photography").val()
+        
+    }
+
+    var dataToSend = JSON.stringify(elemento);
+    //JSON= JavaScript Object Notation
+    $.ajax({
+        type: "PUT",
+        url: 'http://localhost:8080/api/fragance/update',
+        dataType: "text",
+        async: false,
+        data: dataToSend,
+        contentType: "application/json; charset=utf-8",
 
         success: function (response) {
-            console.log(response);
-            var item = response;
 
+            $("#miResultado").empty();
+            $("#id").val();
+            $("#reference").val();
+            $("#brand").val();
+            $("#category").val();
+            $("#presentation").val();
+            $("#description").val();
+            $("#availability").val();
+            $("#price").val();
+            $("#quantity").val();
+            $("#photograohy").val();
+
+            alert("Producto editado");
+            window.location.href = '\listadoProductos.html'
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+
+        }
+    });
+
+    disableCreate = (id) => {
+        return ($('#' + id).val() != '') ? true : false;
+    }
+
+    disableUpdate = (id) => {
+        return ($('#' + id).val() != '') ? false : true;
+    }
+
+}
+
+
+function obtenerItemEspecificoProductos(idItem) {
+    $.ajax({
+        dataType: 'json',
+        url: 'http://localhost:8080/api/fragance/' + idItem,
+        type: 'GET',
+        success: function (response) {
+            console.log(response);
+
+
+
+            var item = response;
             $("#id").val(item.id);
-            $("#name2").val(item.name);
+            $("#reference").val(item.reference);
             $("#brand").val(item.brand);
-            $("#year").val(item.year);
-            $("#description2").val(item.description);
+            $("#category").val(item.category);
+            $("#presentation").val(item.presentation);
+            $("#description").val(item.description);
+            $("#availability").val(item.availability);
+            $("#price").val(item.price);
+            $("#quantity").val(item.quantity);
+            $("#photograohy").val(item.photography);
+                       
+
+            $("#buttonSave").attr('disabled', true);
+            $("#buttonUpdate").attr('disabled', false);
+
 
         },
 
@@ -127,6 +139,16 @@ function editarProducto(id) {
         }
     });
 
-
-
 }
+
+
+$(document).ready(
+    () => {
+        var url_string = window.location.href;
+        var url = new URL(url_string);
+        var productosId = url.searchParams.get("productosId");
+        if (productosId) {
+            obtenerItemEspecificoProductos(productosId);
+        }
+    }
+);

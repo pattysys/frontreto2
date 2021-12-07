@@ -5,79 +5,91 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>formulario Productos</title>
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>formulario de usurio</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    <link rel="stylesheet" href="css/registrar.css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    src="https://code.jquery.com/jquery-3.6.0.min.js"
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="icon" href="your_address_icon" type="image/x-icon">
+    <script
+     src="https://code.jquery.com/jquery-3.6.0.min.js"
      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
      crossorigin="anonymous"></script>
     <script src="js/productos.js"></script>
 </head>
 
 <body>
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div id="login-box" class="col-md-12">
-                    <form id="userForm" class="form " action="" method="post">
-                        <h3 class="text-center text-white">Registrar Producto</h3>
-                        <div class="form-group">
-                            <label for="brandProd" class="text-white ">Marca</label><br />
-                            <input type="text" name="brandProd" id="brandProd" class="form-control" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="modelProd" class="text-white">Modelo</label><br />
-                            <input type="text" name="modelProd" id="modelProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="processorProd" class="text-white">Procesador</label><br>
-                            <input type="text" name="processorProd" id="processorProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="osProd" class="text-white">Sistema Operativo</label><br>
-                            <input type="text" name="osProd" id="osProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="descriptionProd" class="text-white">Descripción</label>
-                            <input type="text" name="descriptionProd" id="descriptionProd" class="form-control"
-                                required>
-                        </div>
-                        <div class="form-group">
-                            <label for="memoryProd" class="text-white">Memoria</label><br>
-                            <input type="number" name="memoryProd" id="memoryProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="hardDriveProd" class="text-white">Disco duro</label><br>
-                            <input type="text" name="hardDriveProd" id="hardDriveProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="availabilityProd" class="text-white">Disponibilidad</label><br>
-                            <select name="availabilityProd" id="availabilityProd" class="form-control" required>
-                                <option selected value="">Selecciona disponibilidad</option>
-                                <option value="disponible">Disponible</option>
-                                <option value="noDisponible">No disponible</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="priceProd" class="text-white">Precio</label><br>
-                            <input type="number" name="priceProd" id="priceProd" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="quantityProd" class="text-white">Cantidad</label><br>
-                            <input type="number" name="quantityProd" id="quantityProd" class="form-control" required>
-                        </div>                        
-                </div>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <img src="img/logo.jpeg" alt="" width="25" height="25" class="d-inline-block align-text-center">
+            <a class="navbar-brand" href="#">Zorrillo LTDA</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="userform.html">Registro Administradores y Asesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="listadoUsers.html">Listado de usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="productoForm.html">Registro Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="listadoProductos.html">LIstado de productos</a>
+                    </li>
+    
+                </ul>
             </div>
         </div>
-        <div class="form-group text-center">
-            <input type="submit" name="guardaeDatos" class="btn btn-dark btn-md" value="Guardar" onclick="" />
-            <input class="btn btn-dark btn-md" value="Cancelar" onclick="" />
-        </div>
+    </nav>
+ 
 
-        </form>
-    </div>
+    <section id="registro admins">
+        <div class="row">
+            <div class="col-12">
+                <h2> Registro de productos</h2>
+            </div>
+        </div>
+        <div class="row" id="resultado1">
+            
+        </div>
+        <div id="formato5" class="form-group container">
+
+            <label for="id" class="text-white">Id </label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="id" placeholder="id" disabled>
+            
+            <label for="identification" class="text-white">Reference </label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="Reference" placeholder="Referencia">
+
+            <label for="name" class="text-white">Marca</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="brand" placeholder="Marca">
+            
+            <label for="address" class="text-white">Categoria</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="category" placeholder="Categoria">
+
+            <label for="cellPhone" class="text-white">Presentacion</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="presentation" placeholder="Presentacion">
+            
+            <label for="email" class="text-white">Descripcion</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="description" placeholder="Descripcion">
+
+            <label for="password" class="text-white">Disponibilidad</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="availability" placeholder="Disponibilidad">
+            
+            <label for="zone" class="text-white">Precio</label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="price" placeholder="Precio">
+            
+            <label for="zone" class="text-white">Cantidad</label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="quantity" placeholder="Cantidad">
+            
+            <label for="zone" class="text-white">Fotografia</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="photography" placeholder="Fotografia">
+            
+            <button class="btn btn-primary mb-3 center" id="buttonSave" onclick="guardarInformacionProductos()" disable="false">Guardar</button>
+            <button class="btn btn-primary mb-3 center" id="buttonUpdate" onclick="actualizarInformacionProductos()"disable="true">Actualizar</button>
+            
+        </div>
+        
+    </section>
 </body>
 
 </html>
