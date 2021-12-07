@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>formulario de usurio</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="icon" href="your_address_icon" type="image/x-icon">
+    <script
+     src="https://code.jquery.com/jquery-3.6.0.min.js"
+     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+     crossorigin="anonymous"></script>
+    <script src="js/misfunciones.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <img src="img/logo.jpeg" alt="" width="25" height="25" class="d-inline-block align-text-center">
+            <a class="navbar-brand" href="#">Zorrillo LTDA</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="userform.html">Registro Administradores y Asesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="listadoUsers.html">Listado de usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="productosform.html">Registro Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="productosForm.html">LIstado de productos</a>
+                    </li>
+    
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+
+    <section id="registro admins">
+        <div class="row">
+            <div class="col-12">
+                <h2> Registro Aministradores y Asesores</h2>
+            </div>
+        </div>
+        <div class="row" id="resultado1">
+            
+        </div>
+        <div id="formato5" class="form-group container">
+
+            <label for="id" class="text-white">Id </label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="id" placeholder="id" disabled>
+            
+            <label for="identification" class="text-white">Identificacion </label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="identification" placeholder="identificacion">
+
+            <label for="name" class="text-white">Nombre</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="name" placeholder="nombre">
+            
+            <label for="address" class="text-white">Direccion</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="address" placeholder="direccion">
+
+            <label for="cellPhone" class="text-white">Telefono de contacto</label>
+            <input class="form-control m-3" style="width: 18em" type="number" id="cellPhone" placeholder="telefono de contacto">
+            
+            <label for="email" class="text-white">Correo Electronico</label>
+            <input class="form-control m-3" style="width: 18em" type="email" id="email" placeholder="correo">
+
+            <label for="password" class="text-white">Contraseña</label>
+            <input class="form-control m-3" style="width: 18em" type="password" id="password" placeholder="constraseña">
+            
+            <label for="zone" class="text-white">Zona</label>
+            <input class="form-control m-3" style="width: 18em" type="text" id="zone" placeholder="zona">
+            
+            <div class="form-control m-3" style="width: 18em">
+                <select name="type" id="type"class="form-control" required>
+                    <option selected value="">Selecciona tipo de usuario</option> 
+                    <option value="coordinadorZona">Coordinador de zona</option>
+                    <option value="asesorComercial">Asesor Comercial</option>                                                             
+                  </select >                            
+            </div> 
+            
+            <button class="btn btn-primary mb-3 center" id="buttonSave" onclick="guardarInformacionUsuarios()" disable="false">Guardar</button>
+            <button class="btn btn-primary mb-3 center" id="buttonUpdate" onclick="actualizarInformacionUsuarios()"disable="true">Actualizar</button>
+            
+        </div>
+        
+    </section>
+</body>
+
+</html>
