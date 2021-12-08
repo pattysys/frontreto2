@@ -35,8 +35,8 @@ function pintarRespuesta(respuesta) {
 
 }
 
-redirect = (productosId) => {
-    window.location.href = '/productoForm.html?productosId=' + productosId;
+redirect = (productosReference) => {
+    window.location.href = '/productoForm.html?productosReference=' + productosReference;
 };
 
 $(document).ready(
@@ -45,12 +45,12 @@ $(document).ready(
     }
 );
 
-function borrarInformacionProductos(idElemento) {
+function borrarInformacionProductos(referenceElemento) {
 
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + idElemento,
+        url: 'http://localhost:8080/api/fragance/' + referenceElemento,
         type: 'DELETE',
         contentType: 'application/json',
 
@@ -66,10 +66,10 @@ function borrarInformacionProductos(idElemento) {
     });
 }
 
-function obtenerItemEspecificoProductos(idItem) {
+function obtenerItemEspecificoProductos(referenceItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + idItem,
+        url: 'http://localhost:8080/api/fragance/' + referenceItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -77,7 +77,6 @@ function obtenerItemEspecificoProductos(idItem) {
 
 
             var item = response;
-            $("#id").val(item.id);
             $("#reference").val(item.reference);
             $("#brand").val(item.brand);
             $("#category").val(item.category);
@@ -86,7 +85,7 @@ function obtenerItemEspecificoProductos(idItem) {
             $("#availability").val(item.availability);
             $("#price").val(item.price);
             $("#quantity").val(item.quantity);
-            $("#photograohy").val(item.photography);
+            $("#photography").val(item.photography);
             
 
             $("#buttonSave").attr('disabled', true);
@@ -102,18 +101,18 @@ function obtenerItemEspecificoProductos(idItem) {
 
 }
 
-createUser = () => {
+createProductos = () => {
     window.location.href = '/productoForm.html';
 };
 
 function actualizarInformacionProductos() {
 
-    if (!$('#id').val()) {
+    if (!$('#reference').val()) {
         alert('Debes ingresar un Producto');
         return;
     }
     var elemento = {
-        id: parseInt($("#reference").val()),
+
         reference: $("#reference").val(),
         brand: $("#brand").val(),
         category: $("#category").val(),
@@ -139,7 +138,6 @@ function actualizarInformacionProductos() {
         success: function (response) {
 
             $("#miResultado").empty();
-            $("#id").val();
             $("#reference").val();
             $("#brand").val();
             $("#category").val();
@@ -148,9 +146,9 @@ function actualizarInformacionProductos() {
             $("#availability").val();
             $("#price").val();
             $("#quantity").val();
-            $("#photograohy").val();
+            $("#photography").val();
 
-            alert("Usuario editado");
+            alert("Producto  editado correctamente");
             window.location.reload()
         },
 
@@ -159,12 +157,12 @@ function actualizarInformacionProductos() {
         }
     });
 
-    disableCreate = (id) => {
-        return ($('#' + id).val() != '') ? true : false;
+    disableCreate = (reference) => {
+        return ($('#' + reference).val() != '') ? true : false;
     }
 
-    disableUpdate = (id) => {
-        return ($('#' + id).val() != '') ? false : true;
+    disableUpdate = (reference) => {
+        return ($('#' + reference).val() != '') ? false : true;
     }
 
 }
