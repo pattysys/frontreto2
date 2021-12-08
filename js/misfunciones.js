@@ -26,13 +26,13 @@ function guardarInformacionUsuarios() {
                 console.log(response);
                 console.log("Se guardo correctamente");
                 alert("Cuenta creada de forma correcta");
-                window.location.reload()
+                window.location.href="/listadoUser.html"
 
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
                 window.location.reload()
-                alert("No fue posible crear la cuenta");
+                alert("No fue posible crear el producto");
 
 
             }
