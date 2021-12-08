@@ -10,7 +10,7 @@ function guardarInformacionProductos() {
         availability: $("#availability").val(),
         price:$("#price").val(),
         quantity:$("#quantity").val(),
-        photography:$("photography").val()
+        photography:$("#photography").val()
     };
 
     $.ajax({
@@ -26,7 +26,7 @@ function guardarInformacionProductos() {
                 console.log(response);
                 console.log("Se guardo correctamente");
                 alert("Producto creado de forma correcta");
-                window.location.reload()
+                window.location.href="/listadoProductos.html"
 
             },
 
@@ -55,7 +55,7 @@ function actualizarInformacionProductos() {
         availability: $("#availability").val(),
         price:$("#price").val(),
         quantity:$("#quantity").val(),
-        photography:$("photography").val()
+        photography:$("#photography").val()
         
     }
 
@@ -144,7 +144,7 @@ $(document).ready(
         var url = new URL(url_string);
         var productosReference = url.searchParams.get("productosReference");
         if (productosReference) {
-            obtenerItemEspecificoUsuarios(productosReference);
+            obtenerItemEspecificoProductos(productosReference);
         }
     }
 );

@@ -19,12 +19,12 @@ function pintarRespuesta(respuesta) {
             myTable+="<td>"+respuesta[i].category+"</td>";
             myTable+="<td>"+respuesta[i].presentation+"</td>";
             myTable+="<td>"+respuesta[i].description+"</td>";
-            myTable+="<td>"+respuesta[i].availibility+"</td>";
+            myTable+="<td>"+(respuesta[i].availability ? 'SI': 'NO')+"</td>";
             myTable+="<td>"+respuesta[i].price+"</td>";
             myTable+="<td>"+respuesta[i].quantity+"</td>";
             myTable+="<td>"+respuesta[i].photography+"</td>";
-            myTable+="<td> <button class=\"btn btn-success\"onclick='redirect("+respuesta[i].id+")'>Editar</button>";
-            myTable+="<td> <button class=\"btn btn-danger\" onclick='borrarInformacionProductos("+respuesta[i].id+")'> Eliminar</button>";
+            myTable+="<td> <button class=\"btn btn-success\" onclick=\"redirect('"+respuesta[i].reference+"')\">Editar</button>";
+            myTable+="<td> <button class=\"btn btn-danger\" onclick=\"borrarInformacionProductos('"+respuesta[i].reference+"')\"> Eliminar</button>";
     
             myTable += "</tr>";
     }
