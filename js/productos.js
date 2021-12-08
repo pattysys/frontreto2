@@ -2,7 +2,6 @@
 
 function guardarInformacionProductos() {
     let var2 = {
-        id: parseInt($("#reference").val()),
         reference: $("#reference").val(),
         brand: $("#brand").val(),
         category: $("#category").val(),
@@ -26,14 +25,14 @@ function guardarInformacionProductos() {
             success: function (response) {
                 console.log(response);
                 console.log("Se guardo correctamente");
-                alert("Cuenta creada de forma correcta");
+                alert("Producto creado de forma correcta");
                 window.location.reload()
 
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
                 window.location.reload()
-                alert("No fue posible crear la cuenta");
+                alert("No fue posible crear producto");
 
 
             }
@@ -43,12 +42,11 @@ function guardarInformacionProductos() {
 
 function actualizarInformacionProductos() {
 
-    if (!$('#id').val()) {
+    if (!$('#reference').val()) {
         alert('Debes ingresar una referencia');
         return;
     }
     var elemento = {
-        id: parseInt($("#reference").val()),
         reference: $("#reference").val(),
         brand: $("#brand").val(),
         category: $("#category").val(),
@@ -74,7 +72,6 @@ function actualizarInformacionProductos() {
         success: function (response) {
 
             $("#miResultado").empty();
-            $("#id").val();
             $("#reference").val();
             $("#brand").val();
             $("#category").val();
@@ -83,7 +80,7 @@ function actualizarInformacionProductos() {
             $("#availability").val();
             $("#price").val();
             $("#quantity").val();
-            $("#photograohy").val();
+            $("#photography").val();
 
             alert("Producto editado");
             window.location.href = '\listadoProductos.html'
@@ -94,21 +91,21 @@ function actualizarInformacionProductos() {
         }
     });
 
-    disableCreate = (id) => {
-        return ($('#' + id).val() != '') ? true : false;
+    disableCreate = (reference) => {
+        return ($('#' + reference).val() != '') ? true : false;
     }
 
-    disableUpdate = (id) => {
-        return ($('#' + id).val() != '') ? false : true;
+    disableUpdate = (reference) => {
+        return ($('#' + reference).val() != '') ? false : true;
     }
 
 }
 
 
-function obtenerItemEspecificoProductos(idItem) {
+function obtenerItemEspecificoProductos(referenceItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + idItem,
+        url: 'http://localhost:8080/api/fragance/' + referenceItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -116,7 +113,6 @@ function obtenerItemEspecificoProductos(idItem) {
 
 
             var item = response;
-            $("#id").val(item.id);
             $("#reference").val(item.reference);
             $("#brand").val(item.brand);
             $("#category").val(item.category);
@@ -125,7 +121,7 @@ function obtenerItemEspecificoProductos(idItem) {
             $("#availability").val(item.availability);
             $("#price").val(item.price);
             $("#quantity").val(item.quantity);
-            $("#photograohy").val(item.photography);
+            $("#photography").val(item.photography);
                        
 
             $("#buttonSave").attr('disabled', true);
@@ -146,9 +142,9 @@ $(document).ready(
     () => {
         var url_string = window.location.href;
         var url = new URL(url_string);
-        var productosId = url.searchParams.get("productosId");
-        if (productosId) {
-            obtenerItemEspecificoProductos(productosId);
+        var productosReference = url.searchParams.get("productosReference");
+        if (productosReference) {
+            obtenerItemEspecificoUsuarios(productosReference);
         }
     }
 );
