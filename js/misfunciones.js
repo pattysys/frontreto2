@@ -26,7 +26,7 @@ function guardarInformacionUsuarios() {
                 console.log(response);
                 console.log("Se guardo correctamente");
                 alert("Cuenta creada de forma correcta");
-                window.location.href="/listadoUser.html"
+                window.location.href="/listadoUsers.html"
 
             },
 
