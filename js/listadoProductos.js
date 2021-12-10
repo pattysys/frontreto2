@@ -102,7 +102,7 @@ function obtenerItemEspecificoProductos(referenceItem) {
 }
 
 createProductos = () => {
-    window.location.href = '/productoForm.html';
+    window.location.href = "/productoForm.html";
 };
 
 function actualizarInformacionProductos() {

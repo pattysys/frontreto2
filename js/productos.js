@@ -1,6 +1,24 @@
 
 
 function guardarInformacionProductos() {
+
+    let formulario = $('#resultado1');
+    
+    let data = formulario.serializeArray();
+
+    console.log(data);
+
+    for (let index = 0; index < data.length; index++) {
+        const element = data[index];
+
+        if (!element.value) {
+            alert(element.name + ' es obligatorio!');
+            $('#' + element.name).focus();
+            return;
+        }
+        
+    }
+
     let var2 = {
         reference: $("#reference").val(),
         brand: $("#brand").val(),
@@ -31,7 +49,7 @@ function guardarInformacionProductos() {
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                window.location.reload()
+               // window.location.reload()
                 alert("No fue posible crear producto");
 
 
@@ -83,7 +101,7 @@ function actualizarInformacionProductos() {
             $("#photography").val();
 
             alert("Producto editado");
-            window.location.href = '\listadoProductos.html'
+            window.location.href = "/listadoProductos.html"
         },
 
         error: function (jqXHR, textStatus, errorThrown) {

@@ -29,7 +29,7 @@ function pintarRespuesta(respuesta) {
     }
 
     myTable+= "</table>";
-    $("#lista").html(myTable);
+    $("#listaUser").html(myTable);
 
 
 }

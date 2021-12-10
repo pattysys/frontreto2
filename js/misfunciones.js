@@ -1,6 +1,73 @@
 
 
+
 function guardarInformacionUsuarios() {
+    
+    const identification = document.getElementById('identification');
+    const name = document.getElementById('name');
+    const address = document.getElementById('address');
+    const cellPhone = document.getElementById('cellPhone');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const zone = document.getElementById('zone');
+    const type = document.getElementById('type');
+    
+    
+    if (identification.value.length == 0) {
+      alert("Ingrese su identificacion")
+      identification.focus()
+      return 0;
+    }
+    
+    if (name.value.length == 0) {
+      alert("Ingrese su nombre")
+      name.focus()
+      return 0;
+    
+    }
+    
+    if (address.value.length == 0) {
+        alert("Ingrese su direccion")
+        address.focus()
+        return 0;
+    
+    }
+    
+    if (cellPhone.value.length == 0) {
+        alert("Ingrese un telefono")
+        cellPhone.focus()
+        return 0;
+    
+    }
+    
+    if (email.value.length == 0) {
+        alert("Ingrese una email")
+        email.focus()
+        return 0;
+    
+    }
+    
+    if (password.value.length == 0) {
+        alert("Ingrese una contraseña")
+        password.focus()
+        return 0;
+    
+    }
+    
+    if (zone.value.length == 0) {
+        alert("Ingrese una zona")
+        zone.focus()
+        return 0;
+    
+    }
+    
+    if (type.value.length == 0) {
+        alert("Ingrese una tipo de usuario")
+        type.focus()
+        return 0;
+    
+    }
+
     let var2 = {
         id: parseInt($("#identification").val()),
         identification: $("#identification").val(),
@@ -31,8 +98,8 @@ function guardarInformacionUsuarios() {
             },
 
             error: function (jqXHR, textStatus, errorThrown) {
-                window.location.reload()
-                alert("No fue posible crear el producto");
+                // window.location.reload()
+                alert("No fue posible crear el usuario");
 
 
             }

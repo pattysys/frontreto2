@@ -9,6 +9,7 @@
     <title>formulario de usurio</title>
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <link rel="stylesheet" href="css/inicio.css">
+    <link href="css/formulario.css" rel="stylesheet">
     <script
      src="https://code.jquery.com/jquery-3.6.0.min.js"
      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
@@ -33,7 +34,7 @@
                         <a class="nav-link active" aria-current="page" href="productoForm.html">Registro Productos</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="listadoProductos.html">LIstado de productos</a>
+                        <a class="nav-link" aria-current="page" href="listadoProductos.html">Listado de productos</a>
                     </li>
     
                 </ul>
@@ -43,47 +44,59 @@
  
 
     <section id="registro admins">
-        <div class="row">
-            <div class="col-12">
-                <h2> Registro de productos</h2>
-            </div>
-        </div>
-        <div class="row" id="resultado1">
-            
-        </div>
-        <div id="formato5" class="form-group container">
-            <label for="identification" class="text-white">Reference </label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="reference" placeholder="Referencia">
+        <form class="formulario" id="resultado1">
+            <fieldset>
+                <legend>Registro de Productos</legend>                   
+                <div id="formato5" class="contenedor-campos">
+                    <div class="campo">
+                        <label>Reference </label>
+                        <input class="form-control m-3"
+                               style="width: 18em" 
+                               type="text" 
+                               id="reference" 
+                               name="reference" 
+                               placeholder="Referencia" 
+                               required>
+                    </div>
+                    <div class="campo">        
+                        <label>Marca</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="brand" name="brand" placeholder="Marca" required>
+                    </div>
+                    <div class="campo">
+                        <label>Categoria</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="category" name="category" placeholder="Categoria" required>
+                    </div>  
+                    <div class="campo">
+                        <label>Presentacion</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="presentation" name="presentation"placeholder="Presentacion" required>
+                    </div>
+                    <div class="campo">
+                        <label>Descripcion</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="description" name="description"placeholder="Descripcion" required>
+                    </div>
+                    <div class="campo"> 
+                        <label>Disponibilidad</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="availability" name="availability" placeholder="Disponibilidad" required>
+                    </div>
+                    <div class="campo">
+                        <label>Precio</label>
+                        <input class="form-control m-3" style="width: 18em" type="number" id="price" name="price" placeholder="Precio" required>
+                    </div>
+                    <div class="campo">
+                        <label>Cantidad</label>
+                        <input class="form-control m-3" style="width: 18em" type="number" id="quantity" name="quantity" placeholder="Cantidad" required>
+                    </div>
+                    <div class="campo">
+                        <label>Fotografia-URL</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="photography" name="photography" placeholder="URL" required>
+                    </div>
+                </div>  
 
-            <label for="name" class="text-white">Marca</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="brand" placeholder="Marca">
-            
-            <label for="address" class="text-white">Categoria</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="category" placeholder="Categoria">
-
-            <label for="cellPhone" class="text-white">Presentacion</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="presentation" placeholder="Presentacion">
-            
-            <label for="email" class="text-white">Descripcion</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="description" placeholder="Descripcion">
-
-            <label for="password" class="text-white">Disponibilidad</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="availability" placeholder="Disponibilidad">
-            
-            <label for="zone" class="text-white">Precio</label>
-            <input class="form-control m-3" style="width: 18em" type="number" id="price" placeholder="Precio">
-            
-            <label for="zone" class="text-white">Cantidad</label>
-            <input class="form-control m-3" style="width: 18em" type="number" id="quantity" placeholder="Cantidad">
-            
-            <label for="zone" class="text-white">Fotografia-URL</label>
-            <input class="form-control m-3" style="width: 18em" type="text" id="photography" placeholder="URL">
-            
-            <button class="btn btn-primary mb-3 center" id="buttonSave" onclick="guardarInformacionProductos()" disable="false">Guardar</button>
-            <button class="btn btn-primary mb-3 center" id="buttonUpdate" onclick="actualizarInformacionProductos()"disable="true">Actualizar</button>
-            
-        </div>
-        
+                <button type="button" class="btn btn-primary mb-3 center" id="buttonSave" onclick="guardarInformacionProductos()" disable="false">Guardar</button>
+                <button type="button" class="btn btn-primary mb-3 center" id="buttonUpdate" onclick="actualizarInformacionProductos()"disable="true">Actualizar</button>   
+               
+            </fieldset>
+        </form>
     </section>
 </body>
 
