@@ -29,7 +29,7 @@ function validar() {
     url: "http://localhost:8080/api/user/" + credentials.email + "/" + credentials.password,
 
     success: function (response) {
-      if (response.name == 'NO DEFINIDO') {
+      if (!response.name) {
         alert('no existe usuario!');
         return;
       }
